@@ -7,7 +7,7 @@ group "tech.kronicle"
 archivesBaseName = "graphql-code-first"
 description "graphql-code-first library for taking a code first approach with the graphql-java framework"
 
-//apply from: "$rootDir/gradle/publish.gradle"
+apply from: "$rootDir/gradle/publish.gradle"
 
 dependencies {
     annotationProcessor platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
