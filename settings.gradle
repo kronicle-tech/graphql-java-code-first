@@ -1,0 +1,20 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+
+    plugins {
+        id "io.freefair.lombok" version lombokPluginVersion apply false
+        id "com.github.spotbugs" version spotBugsPluginVersion apply false
+        id "com.jfrog.artifactory" version artifactoryPluginVersion apply false
+        id "io.snyk.gradle.plugin.snykplugin" version snykPluginVersion apply false
+        id "org.sonarqube" version sonarQubePluginVersion apply false
+        id "org.springframework.boot" version springBootVersion apply false
+        id "pl.allegro.tech.build.axion-release" version axionReleasePluginVersion apply false
+        id "tech.kronicle.dependencies-file" version dependenciesFilePluginVersion apply false
+    }
+}
+
+include "graphql-java-code-first-annotations"
+include "graphql-java-code-first"
+include "spring-graphql-code-first"

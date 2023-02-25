@@ -1,0 +1,40 @@
+# This file is read automatically by Kronicle https://kronicle.tech
+
+components:
+  - id: graphql-java-code-first
+    name: GraphQL Java Code First
+    typeId: library
+    repo:
+      url: https://github.com/kronicle-tech/graphql-java-code-first.git
+    description: |
+      A library for taking a code-first approach to defining a GraphQL API with [GraphQL Java](https://www.graphql-java.com/).  Also supports GraphQL with Sprint Boot
+    notes: |
+      A library that uses annotations to programmatically generate a GraphQL API with [GraphQL Java](https://www.graphql-java.com/).
+    tags:
+      - library
+    teams:
+      - teamId: kronicle-project
+    links:
+      - url: https://github.com/kronicle-tech/graphql-java-code-first
+        description: |
+          GraphQL Java Code First repo
+      - url: https://kronicle.tech
+        description: |
+          The Kronicle project website
+    responsibilities: []
+    crossFunctionalRequirements: []
+    techDebts: []
+
+diagrams:
+  - id: kronicle
+    name: Kronicle
+    type: architecture
+    description: |
+      Architecture diagram for Kronicle
+    connections:
+      - sourceComponentId: graphql-java-code-first
+        targetComponentId: graphql-java
+        label: use annotations to define a GraphQL API contract instead of writing a `*.graphql` file
+      - sourceComponentId: spring-graphql-code-first
+        targetComponentId: spring-graphql
+        label: also use annotations to define a GraphQL API contract with spring-graphql

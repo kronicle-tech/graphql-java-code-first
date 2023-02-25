@@ -1,0 +1,19 @@
+apply plugin: 'org.sonarqube'
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "kronicle-tech_graphql-java-code-first"
+        property "sonar.organization", "kronicle-tech"
+        property 'sonar.host.url', sonarQubeHostUrl
+
+        property 'sonar.projectName', 'graphql-java-code-first'
+        property 'sonar.projectVersion', version
+        property 'sonar.links.homepage', websiteUrl
+
+        property 'sonar.sourceEncoding', 'UTF-8'
+
+        if (project.name == "app") {
+            property 'sonar.cobertura.reportPath', 'coverage/cobertura-coverage.xml'
+        }
+    }
+}

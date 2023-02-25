@@ -1,0 +1,57 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId archivesBaseName
+
+            from components.java
+
+            pom {
+                name = "$group:$archivesBaseName"
+                description = project.description
+                url = websiteUrl
+                licenses {
+                    license {
+                        name = "MIT License"
+                        url = "https://github.com/kronicle-tech/graphql-java-code-first/blob/main/LICENSE"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "simondean"
+                        name = "Simon Dean"
+                        email = "simon@simondean.org"
+                    }
+                }
+                scm {
+                    connection = "scm:git:$repoUrl"
+                    developerConnection = "scm:git:$repoUrl"
+                    url = websiteUrl
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name "OSSRH"
+            url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials {
+                username System.getenv("OSSRH_USERNAME")
+                password System.getenv("OSSRH_PASSWORD")
+            }
+        }
+    }
+}
+
+signing {
+    useInMemoryPgpKeys System.getenv("SIGNING_KEY"), System.getenv("SIGNING_PASSWORD")
+    sign publishing.publications.mavenJava
+}

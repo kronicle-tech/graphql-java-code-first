@@ -1,0 +1,15 @@
+name: CI Branch
+
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+
+jobs:
+
+  ci-build:
+    uses: ./.github/workflows/ci-shared-build.yaml
+    with:
+      build_tasks: build
+    secrets: inherit
